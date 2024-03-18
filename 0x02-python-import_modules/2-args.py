@@ -1,21 +1,31 @@
 #!/usr/bin/python3
-import sys
+# -----------------------------------------------------------
+# Python program that:
+# demonstrates how to print the number of commandline arguments
+# and the list of its arguments
+#
+# (C) 2022 Igbinijesu Samuel, Lagos, Nigeria
+# email igbinijesusamuel@gmail.com
+# -----------------------------------------------------------
 
-if __name__ != "__main__":
-    exit()
+# import sys module to access argv
+from sys import argv
 
-argStr = "{:d} argument"
-argc = len(sys.argv) - 1
-if argc == 0:
-    argStr += 's.'
-elif argc == 1:
-    argStr += ':'
-else:
-    argStr += 's:'
-print(argStr.format(argc))
+# Determine the length of argv excluding item at index 0
+argv_length = len(argv) - 1
 
-i = 0
-for arg in sys.argv:
-    if i != 0:
-        print("{:d}: {:s}".format(i, arg))
-    i += 1
+# This code should not run when this file is imported
+if __name__ == "__main__":
+    # Print out different statements based on length
+    if argv_length > 1:
+        print("{:d} arguments:".format(argv_length))
+    elif argv_length == 0:
+        print("{:d} arguments.".format(argv_length))
+    else:
+        print("{:d} argument:".format(argv_length))
+
+    # Loop through and print out item and it's index
+    for arg_item in argv:
+        if argv.index(arg_item) == 0:
+            continue
+        print("{:d}: {}".format(argv.index(arg_item), arg_item))
